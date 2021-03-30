@@ -1,0 +1,42 @@
+source file:
+FSCU.cpp, ACA.hpp, util.hpp
+
+Macro:
+OUTPUT: determine if the result will ouput into a file
+TRACE: trace mode to moniter the threads load during the factorization
+BUT_CON: use SRBT or not
+
+
+FSCU.cpp: main function
+
+7 input parameters in total:
+1. m: the exponent of the input matrix size
+2. nb: block size
+3. vesion: any words to describe the procedure used to identify the different combination of input parameters
+4. thr: low-rank accuracy
+5: rank_thr: a parameter used in improved ACA algorirhm (refer to my paper)
+6: val_k: a parameter used to generate Laplacian matrix
+7: filename: used to define the name of output data file.
+
+
+
+
+ACA.hpp: describe the improved ACA algorirhm and related functions inside.
+
+void aca(const double *A, const int n, double* X, double* Y, double thr, int &rank, int max_rank)
+
+input parameters:
+A: input full-rank matrix
+n: matrix size
+thr: low-rank approximation accuracy
+max_rank: a parameter to limit the times of generating vectors (refer to my paper)
+
+ouput parameters:
+X, Y:  X*YT is the approximation result of A
+rank: the rank of the approximation result
+
+
+
+
+util.hpp:
+include matrix generating functions, data layout functions and others
